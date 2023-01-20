@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Our Pets</h1>
+
+<div>
+
+  {% for pet in pets %}
+  <div>
+    <img class="img-thumbnail" src="{{pet.photo_url}}" alt="" width="200" height="200">
+    <a href="/pet_details/{{pet.id}}">{{pet.name}}</a>
+    {% if pet.available %} <b> is available!</b> {% endif %}
+  </div>
+  {% else %}
+  <div>Hold Tight! No pets to adopt, but soon more will show.</div>
+  {% endfor %}
+
+</div>
+
+<a class="btn btn-primary" href="{{url_for('add_pet')}}">Add a Pet</a>
+
+{% endblock %}
